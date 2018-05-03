@@ -2,82 +2,240 @@
 <html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
-    <title>管理页面</title>
+    <title>仿网易云音乐管理页面</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+    <link href='https://cdn.webfont.youziku.com/webfonts/nomal/107255/46871/5aeb1d21f629d91bc896d084.css' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
-    <div id="loadContainer">
-        <button id="pickfiles">上传</button>
+    <div class="page">
+        <header>
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-music"></use>
+            </svg>
+            <span class="css11cb9313881a2f7">网易云音乐后台管理</span>
+        </header>
+        <div class="addOrEditSongModal-wrapper">
+            <div class="addOrEditSongModal">
+                <div class="header-wrapper">
+                    <h4>新增/编辑歌曲</h4>
+                    <svg class="icon closeModal" aria-hidden="true">
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </div>
+                <div class="body-wrapper">
+                    <p class="flexwrapper"><span>歌曲名称：</span><input type="text" class="form-control"></p>
+                    <p class="flexwrapper"><span>歌手：</span><input type="text" class="form-control"></p>
+                    <p class="flexwrapper"><span>外链：</span><input type="text" class="form-control"></p>
+                </div>
+                <div class="footer-wrapper">
+                    <button class="btn btn-success">保存</button>
+                    <button class="btn btn-secondary">取消</button>
+                </div>
+            </div>
+        </div>
+        <main>
+            <aside>
+            </aside>
+            <div class="songList">
+                <div class="title">
+                    <h4>已上传的歌曲</h4>
+                    <span class="songsNum">166首音乐</span>
+                </div>
+                <div class="songTableWrapper">
+                    <table class="songListTable">
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <td>音乐标题</td>
+                                <td>歌手</td>
+                                <td>外链</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>战争</td>
+                            <td>陈冠希</td>
+                            <td>https://www.baidu.com</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>战争</td>
+                            <td>陈冠希</td>
+                            <td>https://www.baidu.com</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>战争</td>
+                            <td>陈冠希</td>
+                            <td>https://www.baidu.com</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>战争</td>
+                            <td>陈冠希</td>
+                            <td>https://www.baidu.com</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>战争</td>
+                            <td>陈冠希</td>
+                            <td>https://www.baidu.com</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>战争</td>
+                            <td>陈冠希</td>
+                            <td>https://www.baidu.com</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>战争</td>
+                            <td>陈冠希</td>
+                            <td>https://www.baidu.com</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>战争</td>
+                            <td>陈冠希</td>
+                            <td>https://www.baidu.com</td>
+                        </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>战争</td>
+                                <td>陈冠希</td>
+                                <td>https://www.baidu.com</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>战争</td>
+                                <td>陈冠希</td>
+                                <td>https://www.baidu.com</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>战争</td>
+                                <td>陈冠希</td>
+                                <td>https://www.baidu.com</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>战争</td>
+                                <td>陈冠希</td>
+                                <td>https://www.baidu.com</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>战争</td>
+                                <td>陈冠希</td>
+                                <td>https://www.baidu.com</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>战争</td>
+                                <td>陈冠希</td>
+                                <td>https://www.baidu.com</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>战争</td>
+                                <td>陈冠希</td>
+                                <td>https://www.baidu.com</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>战争</td>
+                                <td>陈冠希</td>
+                                <td>https://www.baidu.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <span>我的天空-低调组合 上传中 40%</span>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%"></div>
+            </div>
+        </footer>
     </div>
-    <script src="../node_modules/leancloud-storage/dist/av-min.js">
-    </script>
-    <script>
-        var APP_ID = 'cnUG7lwC3HDMolWKKWQABy7O-gzGzoHsz';
-        var APP_KEY = 'EpoxUt2k1FitaNMb180WDJdk';
-        AV.init({
-            appId: APP_ID,
-            appKey: APP_KEY,
-        });
-    </script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="//at.alicdn.com/t/font_652276_sa6q8r6iwqknjyvi.js"></script>
+    <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
     <script src="../node_modules/plupload/js/moxie.min.js"></script>
     <script src="../node_modules/plupload/js/plupload.min.js"></script>
     <script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
+    <script src="js/admin/aside-addNewSong.js"></script>
     <script>
-        var uploader = Qiniu.uploader({
-            runtimes: 'html5',    //上传模式,依次退化
-            browse_button: 'pickfiles',       //上传选择的点选按钮，**必需**
-            uptoken_url : 'http://localhost:8888/uptoken', //若未指定uptoken_url,则必须指定 uptoken ,uptoken由其他程序生成
-            // unique_names: true, // 默认 false，key为文件名。若开启该选项，SDK为自动生成上传成功后的key（文件名）。
-            // save_key: true,   // 默认 false。若在服务端生成uptoken的上传策略中指定了 `sava_key`，则开启，SDK会忽略对key的处理
-            domain: 'http://qiniu-plupload.qiniudn.com/',   //bucket 域名，下载资源时用到，**必需**
-            // p82z3ssr5.bkt.clouddn.com
-            get_new_uptoken: false,  //设置上传文件的时候是否每次都重新获取新的token
-            container: 'loadContainer',           //上传区域DOM ID，默认是browser_button的父元素，
-            max_file_size: '4mb',           //最大文件体积限制
-            dragdrop: true,                   //开启可拖曳上传
-            drop_element: 'loadContainer',        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
-            auto_start: true,                 //选择文件后自动上传，若关闭需要自己绑定事件触发上传
-            init: {
-                'FilesAdded': function(up, files) {
-                    plupload.each(files, function(file) {
-                        // 文件添加进队列后,处理相关的事情
-                    });
-                },
-                'BeforeUpload': function(up, file) {
-                    // 每个文件上传前,处理相关的事情
-                },
-                'UploadProgress': function(up, file) {
-                    // 每个文件上传时,处理相关的事情
-                    //console.log("up", up.total.percent) 获得进度
-                },
-                'FileUploaded': function(up, file, info) {
-                    // 每个文件上传成功后,处理相关的事情
-                    // 其中 info.response 是文件上传成功后，服务端返回的json，形式如
-                    // {
-                    //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-                    //    "key": "gogopher.jpg"
-                    //  }
-                    // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-
-                    // var domain = up.getOption('domain');
-                    // var res = parseJSON(info.response);
-                    // var sourceLink = domain + res.key; 获取上传成功后的文件的Url
-                },
-                'Error': function(up, err, errTip) {
-                    //上传出错时,处理相关的事情
-                },
-                'UploadComplete': function() {
-                    //队列文件处理完毕后,处理相关的事情
-                },
-//                'Key': function(up, file) {
-//                    // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-//                    // 该配置必须要在 unique_names: false , save_key: false 时才生效
+//        var APP_ID = 'cnUG7lwC3HDMolWKKWQABy7O-gzGzoHsz';
+//        var APP_KEY = 'EpoxUt2k1FitaNMb180WDJdk';
+//        AV.init({
+//            appId: APP_ID,
+//            appKey: APP_KEY,
+//        });
+//        var uploader = Qiniu.uploader({
+//            runtimes: 'html5',    //上传模式,依次退化
+//            browse_button: 'pickfiles',       //上传选择的点选按钮，**必需**
+//            uptoken_url : 'http://localhost:8888/uptoken', //若未指定uptoken_url,则必须指定 uptoken ,uptoken由其他程序生成
+//            // unique_names: true, // 默认 false，key为文件名。若开启该选项，SDK为自动生成上传成功后的key（文件名）。
+//            // save_key: true,   // 默认 false。若在服务端生成uptoken的上传策略中指定了 `sava_key`，则开启，SDK会忽略对key的处理
+//            domain: 'p82z3ssr5.bkt.clouddn.com',   //bucket 域名，下载资源时用到，**必需**
+//            // p82z3ssr5.bkt.clouddn.com
+//            get_new_uptoken: false,  //设置上传文件的时候是否每次都重新获取新的token
+//            container: 'loadContainer',           //上传区域DOM ID，默认是browser_button的父元素，
+//            max_file_size: '4mb',           //最大文件体积限制
+//            dragdrop: true,                   //开启可拖曳上传
+//            drop_element: 'loadContainer',        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
+//            auto_start: true,                 //选择文件后自动上传，若关闭需要自己绑定事件触发上传
+//            init: {
+//                'FilesAdded': function(up, files) {
+//                    plupload.each(files, function(file) {
+//                        // 文件添加进队列后,处理相关的事情
+//                    });
+//                },
+//                'BeforeUpload': function(up, file) {
+//                    // 每个文件上传前,处理相关的事情
+//                },
+//                'UploadProgress': function(up, file) {
+//                    // 每个文件上传时,处理相关的事情
+//                    //console.log("up", up.total.percent) 获得进度
+//                },
+//                'FileUploaded': function(up, file, info) {
+//                    // 每个文件上传成功后,处理相关的事情
+//                    // 其中 info.response 是文件上传成功后，服务端返回的json，形式如
+//                    // {
+//                    //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
+//                    //    "key": "gogopher.jpg"
+//                    //  }
+//                    // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
 //
-//                    var key = "";
-//                    // do something with key here
-//                    return key
-//                }
-            }
-        });
+//                    // var domain = up.getOption('domain');
+//                    // var res = parseJSON(info.response);
+//                    // var sourceLink = domain + res.key; 获取上传成功后的文件的Url
+//                    var domain = up.getOption("domain")
+//                    var response = JSON.parse(info.response)
+//                    var sourceLink = "http://" + domain + "/" + encodeURIComponent(response.key)
+//                    console.log("外链", sourceLink)
+//                },
+//                'Error': function(up, err, errTip) {
+//                    //上传出错时,处理相关的事情
+//                },
+//                'UploadComplete': function() {
+//                    //队列文件处理完毕后,处理相关的事情
+//                },
+////                'Key': function(up, file) {
+////                    // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
+////                    // 该配置必须要在 unique_names: false , save_key: false 时才生效
+////
+////                    var key = "";
+////                    // do something with key here
+////                    return key
+////                }
+//            }
+//        });
 
         // domain 为七牛空间（bucket)对应的域名，选择某个空间后，可通过"空间设置->基本设置->域名设置"查看获取
 
