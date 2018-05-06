@@ -3,29 +3,34 @@
     let EVENT_HUB_TOOLS = window.EVENT_HUB
     let view = {
         el: ".page",
-        template: `<div class="addOrEditSongModal-wrapper">
+        template: `<div class="addOrEditSongModal-wrapper animated fadeIn" data-songid="__id__">
                 <div class="addOrEditSongModal animated bounceIn">
                     <div class="header-wrapper">
-                        <h4>新增/编辑歌曲</h4>
+                        <h4>__type__歌曲</h4>
                         <svg class="icon closeModal" aria-hidden="true">
                         <use xlink:href="#icon-close"></use>
                         </svg>
                     </div>
                     <div class="body-wrapper">
                         <p class="flexwrapper"><span>歌曲名称：</span><input title="歌曲名称" song-name="name" type="text" value="__name__" class="form-control"></p>
-                        <p class="flexwrapper"><span>歌手：</span><input title="歌手" song-name="singer" type="text" class="form-control"></p>
-                        <p class="flexwrapper"><span>外链：</span><input title="外链" song-name="url" type="text" value="__link__" class="form-control"></p>
+                        <p class="flexwrapper"><span>歌手：</span><input title="歌手" song-name="singer" type="text" value="__singer__" class="form-control"></p>
+                        <p class="flexwrapper"><span>外链：</span><input title="外链" song-name="url" type="text" value="__url__" class="form-control"></p>
                     </div>
                     <div class="footer-wrapper">
                         <button class="btn btn-success btn-saveNewSong">保存</button>
+                        __delBtn__
                         <button class="btn btn-secondary closeModal">取消</button>
                     </div>
                 </div>
             </div>`,
         render(data) {
-            var temp = this.template
-            for (let key in data) {
-                temp = temp.replace(`__${key}__`, data[key])
+            let forArr = "id type name singer url".split(" ")
+            let temp = this.template
+            forArr.map((value) => {temp = temp.replace(`__${value}__`, data[value] || "")})
+            if (data.type === "新增") {
+                temp = temp.replace(`__delBtn__`, "")
+            } else if (data.type === "编辑") {
+                temp = temp.replace(`__delBtn__`, `<button class="btn btn-danger delSongItem">删除</button>`)
             }
             $(this.el).append(temp)
         },
@@ -81,7 +86,7 @@
                     this.model.addNewSong().then((object) => {
                         TOAST_TOOLS.showToast("success", "歌曲保存成功！")
                         this.removeView()
-                        EVENT_HUB_TOOLS.emit("updateSongList", object.attributes)
+                        EVENT_HUB_TOOLS.emit("updateSongList", {id:object.id, ...object.attributes})
                     }, (error) => {
                         TOAST_TOOLS.showToast("success", "歌曲保存失败")
                         this.removeView()
@@ -91,6 +96,7 @@
         },
         removeView() {
             let showModel = this.$View.find(".addOrEditSongModal-wrapper")
+            showModel.removeClass("fadeIn").addClass("fadeOut")
             showModel.find(".addOrEditSongModal").removeClass("bounceIn").addClass("bounceOut")
                 .one("animationend", function(e) {
                     showModel.remove()

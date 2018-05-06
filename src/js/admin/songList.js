@@ -2,6 +2,7 @@
     let EVENT_HUB_TOOLS = window.EVENT_HUB
     let view = {
         el: ".songList",
+        $tbody: "",
         template: `
         <div class="title">
                     <h4>已上传的歌曲</h4>
@@ -23,10 +24,20 @@
         getOneSongTemplate(item) {
             let arr = ["index", "name", "singer", "url"]
             let $tr = $("<tr></tr>")
+            $tr.attr("data-songid", item.id)
+            $tr.addClass("songItemTR")
             arr.map((value) => {
                 $tr.append($("<td></td>").text(`${item[value]}`))
             })
             return $tr
+        },
+        upDateSongNum() {
+            let len = this.$tbody.find("tr").length
+            $(this.el).find(".songsNum").text(`${len}首音乐`)
+        },
+        addOneSong(newObj) {
+            let tempHTML = this.getOneSongTemplate(newObj)
+            this.$tbody.append(tempHTML)
         },
         render(data) {
             let temp = this.template
@@ -35,9 +46,10 @@
                 temp = temp.replace(`__${key}__`, newData[key])
             }
             $(this.el).html(temp)
-            $(this.el).find("tbody").empty()
+            this.$tbody = $(".songList tbody")
+            this.$tbody.empty()
             for (let i = 0; i < data.length; i++) {
-                $(this.el).find("tbody").append(this.getOneSongTemplate(data[i]))
+                this.$tbody.append(this.getOneSongTemplate(data[i]))
             }
         }
     }
@@ -49,7 +61,7 @@
             let allSongs = new AV.Query("Song")
             return allSongs.find().then((data) => {
                 return data.map((element, index) => {
-                    let newObj = element.attributes
+                    let newObj = {id: element.id, ...element.attributes}
                     newObj.index = (index + 1)
                     return newObj
                 })
@@ -62,6 +74,7 @@
             this.model = model
             this.upDateAllSongs()
             this.listenerToUpdateSongsList()
+            this.bindEvents()
         },
         upDateAllSongs() {
             this.model.fetch().then((data) => {
@@ -73,14 +86,27 @@
         },
         listenerToUpdateSongsList() {
             EVENT_HUB_TOOLS.on("updateSongList", (data) => {
-                let newObj = data
-                let $tbody = $(this.view.el).find("tbody")
-                newObj.index = $tbody.find("tr").length + 1
-                $(this.view.el).find(".songsNum").text(`${newObj.index}首音乐`)
-                let tempHTML = this.view.getOneSongTemplate(newObj)
-                $tbody.append(tempHTML)
+                let newObj = JSON.parse(JSON.stringify(data))
+                newObj.index = this.view.$tbody.find("tr").length + 1
+                this.view.addOneSong(newObj)
+                this.model.data.songs.push(newObj)
+                this.view.upDateSongNum()
             })
         },
+        bindEvents() {
+            $(this.view.el).on("click", ".songItemTR", (e) => {
+                let songId = $(e.currentTarget).attr("data-songid")
+                let newObj = {type: "编辑", id: songId}
+                let allSongs = this.model.data.songs
+                for (let i = 0; i < allSongs.length; i++) {
+                    let songItem = allSongs[i]
+                    if (songItem.id === songId) {
+                        Object.assign(newObj, songItem)
+                    }
+                }
+                window.EVENT_HUB.emit("uploadsuccess", newObj)
+            })
+        }
     }
     controller.init(view, model)
 }

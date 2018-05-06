@@ -65,7 +65,7 @@
                        var response = JSON.parse(info.response)
                        var encodeName = encodeURIComponent(response.key)
                        var sourceLink = "http://" + domain + "/" + encodeName
-                       window.EVENT_HUB.emit("uploadsuccess", {link: sourceLink, name: response.key,})
+                       window.EVENT_HUB.emit("uploadsuccess", {url: sourceLink, name: response.key, type: "新增",})
                    },
                    'Error': function(up, err, errTip) {
                        //上传出错时,处理相关的事情
