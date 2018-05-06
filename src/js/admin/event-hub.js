@@ -1,7 +1,5 @@
 window.EVENT_HUB = {
-    events: {
-
-    },
+    events: {},
     emit(eventName, data) {
         for (let key in this.events) {
             if (key === eventName) {

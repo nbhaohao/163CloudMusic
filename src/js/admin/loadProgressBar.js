@@ -35,13 +35,11 @@
                 if (this.model.data.percent === "100%") {
                     this.model.data.result = "上传完毕"
                     this.model.data.percent = ""
-                    //this.progressbarView.removeClass("progress-bar-animated").removeClass("progress-bar-striped")
                     this.progressbarView.css("width", "0%")
                     this.progressbarView.parent().addClass("active")
                 } else {
                     this.model.data.result = "上传中"
                     this.progressbarView.parent().removeClass("active")
-                    //this.progressbarView.addClass("progress-bar-animated").addClass("progress-bar-striped")
                 }
                 this.view.render(this.model.data)
                 this.progressbarView.css("width", this.model.data.percent)
