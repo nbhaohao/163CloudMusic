@@ -17,22 +17,28 @@
                                 <td>外链</td>
                             </tr>
                         </thead>
-                        <tbody>__songs__</tbody>
+                        <tbody></tbody>
                     </table>
                 </div>`,
         getOneSongTemplate(item) {
-            return `<tr><td>${item.index}</td><td>${item.name}</td><td>${item.singer}</td><td>${item.url}</td></tr>`
+            let arr = ["index", "name", "singer", "url"]
+            let $tr = $("<tr></tr>")
+            arr.map((value) => {
+                $tr.append($("<td></td>").text(`${item[value]}`))
+            })
+            return $tr
         },
         render(data) {
             let temp = this.template
-            let newData = {songs: "", num: data.length}
-            for (let i = 0; i < data.length; i++) {
-                newData.songs += this.getOneSongTemplate(data[i])
-            }
+            let newData = {num: data.length}
             for (let key in newData) {
                 temp = temp.replace(`__${key}__`, newData[key])
             }
             $(this.el).html(temp)
+            $(this.el).find("tbody").empty()
+            for (let i = 0; i < data.length; i++) {
+                $(this.el).find("tbody").append(this.getOneSongTemplate(data[i]))
+            }
         }
     }
     let model = {
