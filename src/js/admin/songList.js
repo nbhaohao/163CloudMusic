@@ -27,7 +27,7 @@
             $tr.attr("data-songid", item.id)
             $tr.addClass("songItemTR")
             arr.map((value) => {
-                $tr.append($("<td></td>").text(`${item[value]}`))
+                $tr.append($("<td></td>").text(`${item[value]}`).attr(`song-td`,`${value}`))
             })
             return $tr
         },
@@ -74,6 +74,7 @@
             this.model = model
             this.upDateAllSongs()
             this.listenerToUpdateSongsList()
+            this.listenerToEditOneSong()
             this.bindEvents()
         },
         upDateAllSongs() {
@@ -91,6 +92,31 @@
                 this.view.addOneSong(newObj)
                 this.model.data.songs.push(newObj)
                 this.view.upDateSongNum()
+            })
+        },
+        upDateOneSongTr(data) {
+            // 更新表格的数据
+            // 更新 model 中的数据
+            let $targetTr = $(`[data-songid=${data.id}]`)
+            $targetTr.find("td").each((index, element) => {
+                let $self = $(element)
+                let name = $self.attr("song-td")
+                if (data[name]) {
+                    $self.text(data[name])
+                }
+            })
+            let allSongs = this.model.data.songs
+            for (let i = 0; i < allSongs.length; i++) {
+                let item = allSongs[i]
+                if (item.id === data.id) {
+                    Object.assign(item, data)
+                }
+            }
+        },
+        listenerToEditOneSong() {
+            EVENT_HUB_TOOLS.on("editOneSong", (data) => {
+                let newObj = JSON.parse(JSON.stringify(data))
+                this.upDateOneSongTr(newObj)
             })
         },
         bindEvents() {

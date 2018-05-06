@@ -45,6 +45,10 @@
             var SongObject = AV.Object.extend('Song');
             var testObject = new SongObject();
             return testObject.save(this.data)
+        },
+        upDateSong(id) {
+            var song = AV.Object.createWithoutData('Song', id);
+            return song.save(this.data)
         }
     }
     let controller = {
@@ -66,9 +70,29 @@
                 this.removeView()
             })
         },
+        addNewSonng() {
+            this.model.addNewSong().then((object) => {
+                TOAST_TOOLS.showToast("success", "歌曲保存成功！")
+                this.removeView()
+                EVENT_HUB_TOOLS.emit("updateSongList", {id:object.id, ...object.attributes})
+            }, (error) => {
+                TOAST_TOOLS.showToast("success", "歌曲保存失败")
+                this.removeView()
+            })
+        },
+        editThisSong(id) {
+            this.model.upDateSong(id).then((object) => {
+                TOAST_TOOLS.showToast("success", "歌曲修改成功！")
+                this.removeView()
+                EVENT_HUB_TOOLS.emit("editOneSong", {id:object.id, ...object.attributes})
+            }, (error) => {
+                TOAST_TOOLS.showToast("success", "歌曲修改失败")
+                this.removeView()
+            })
+        },
         bindSaveBtn() {
             this.$View.on("click", ".btn-saveNewSong", (e) => {
-                let showModel = this.$View.find(".addOrEditSongModal-wrapper .addOrEditSongModal")
+                let showModel = this.$View.find(".addOrEditSongModal-wrapper")
                 let allInputs = showModel.find("[song-name]")
                 let newDataObj = {}
                 let flag = true
@@ -83,14 +107,12 @@
                 }
                 if (flag) {
                     this.model.data = newDataObj
-                    this.model.addNewSong().then((object) => {
-                        TOAST_TOOLS.showToast("success", "歌曲保存成功！")
-                        this.removeView()
-                        EVENT_HUB_TOOLS.emit("updateSongList", {id:object.id, ...object.attributes})
-                    }, (error) => {
-                        TOAST_TOOLS.showToast("success", "歌曲保存失败")
-                        this.removeView()
-                    })
+                    let editId = showModel.attr("data-songid")
+                    if (editId) {
+                        this.editThisSong(editId)
+                        return
+                    }
+                    this.addNewSonng()
                 }
             })
         },
