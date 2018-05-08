@@ -13,6 +13,7 @@
     }
     let model = {}
     let controller = {
+        fileLoadLock: false,
         init(view, model) {
             this.view = view
             this.model = model
@@ -36,12 +37,18 @@
                drop_element: "upNewSongDragArea",        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
                auto_start: true,                 //选择文件后自动上传，若关闭需要自己绑定事件触发上传
                init: {
-                   'FilesAdded': function(up, files) {
-                       plupload.each(files, function(file) {
+                   'FilesAdded': (up, files) => {
+                       plupload.each(files, (file) => {
                            // 文件添加进队列后,处理相关的事情
                        });
+                       if (this.fileLoadLock) {
+                           window.NOTIFICATION_TOOLS.showToast("error", "有文件正在上传，请稍后上传")
+                           up.removeFile(up.files[up.files.length - 1])
+                           return false
+                       }
+                       this.fileLoadLock = true
                    },
-                   'BeforeUpload': function(up, file) {
+                   'BeforeUpload': (up, file) => {
                        // 每个文件上传前,处理相关的事情
                    },
                    'UploadProgress': function(up, file) {
@@ -49,7 +56,7 @@
                        //console.log("up", up.total.percent) 获得进度
                        window.EVENT_HUB.emit("addNewSongProgress", up)
                    },
-                   'FileUploaded': function(up, file, info) {
+                   'FileUploaded': (up, file, info) => {
                        // 每个文件上传成功后,处理相关的事情
                        // 其中 info.response 是文件上传成功后，服务端返回的json，形式如
                        // {
@@ -61,6 +68,7 @@
                        // var domain = up.getOption('domain');
                        // var res = parseJSON(info.response);
                        // var sourceLink = domain + res.key; 获取上传成功后的文件的Url
+                       this.fileLoadLock = false
                        var domain = up.getOption("domain")
                        var response = JSON.parse(info.response)
                        var encodeName = encodeURIComponent(response.key)

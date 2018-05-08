@@ -18,7 +18,6 @@
                     </div>
                     <div class="footer-wrapper">
                         <button class="btn btn-success btn-saveNewSong">保存</button>
-                        __delBtn__
                         <button class="btn btn-secondary closeModal">取消</button>
                     </div>
                 </div>
@@ -27,11 +26,6 @@
             let forArr = "id type name singer url".split(" ")
             let temp = this.template
             forArr.map((value) => {temp = temp.replace(`__${value}__`, data[value] || "")})
-            if (data.type === "新增") {
-                temp = temp.replace(`__delBtn__`, "")
-            } else if (data.type === "编辑") {
-                temp = temp.replace(`__delBtn__`, `<button class="btn btn-danger delSongItem">删除</button>`)
-            }
             $(this.el).append(temp)
         },
     }
