@@ -4,7 +4,7 @@
         template: `
                     <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">123</div>
+                    <div class="swiper-slide"><div class="recommendMusicList"></div><div class="newSongList"></div></div>
                     <div class="swiper-slide">456</div>
                     <div class="swiper-slide">777</div>
                 </div>
@@ -23,10 +23,15 @@
             this.view.render(this.model.data)
             this.listenerToClickToSlide()
             this.initSwiper()
-            this.setMarginTop()
+            this.setMarginTopAndSlideMinHeight()
         },
-        setMarginTop() {
-            $(this.view.el).css("margin-top", String($("header .title").height() + $("header .slidebar").height()) + "px")
+        setMarginTopAndSlideMinHeight() {
+            let headerHeight = $("header .title").height() + $("header .slidebar").height()
+            $(this.view.el).css("margin-top", String(headerHeight) + "px")
+            let restHeight = document.documentElement.clientHeight - headerHeight
+            $(this.view.el).find(".swiper-slide").each((index, element) => {
+                $(element).css("min-height", String(restHeight) + "px")
+            })
         },
         initSwiper() {
             this.mySwiper = new Swiper ('main .swiper-container', {

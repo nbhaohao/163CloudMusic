@@ -1,5 +1,7 @@
 * {margin: 0;padding: 0;}
 h4 {margin-bottom: 0;}
 *, *::after, *::before {box-sizing: border-box;}
-.icon {  width: 1em; height: 1em;  vertical-align: -0.15em;fill: currentColor;overflow: hidden;}
+.icon {  width: 1em; height: 1em;  vertical-align: top;fill: currentColor;overflow: hidden;}
 ul,ol,nav{list-style-type: none;}
+b, em, h1, h2, h3, h4, h5, h6, strong {font-weight: 400;}
+.oneLine-moreEllipsis {overflow: hidden;text-overflow:ellipsis;word-break: normal;}
