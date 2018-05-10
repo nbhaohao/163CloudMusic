@@ -23,7 +23,14 @@
             this.view.render(this.model.data)
             this.listenerToClickToSlide()
             this.initSwiper()
+            this.loadModule("./js/index/recommendMusic.js")
+            this.loadModule("./js/index/newSongList.js")
             this.setMarginTopAndSlideMinHeight()
+        },
+        loadModule(scriptName) {
+            let script = document.createElement("script")
+            script.src = scriptName
+            document.body.appendChild(script)
         },
         setMarginTopAndSlideMinHeight() {
             let headerHeight = $("header .title").height() + $("header .slidebar").height()
