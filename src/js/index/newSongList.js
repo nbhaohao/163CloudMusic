@@ -7,21 +7,21 @@
         `,
         getOneSongItem(data) {
             let $li = $(`
-               <li class="li-songItem" data-id="${data.id}">
-                    <div class="songInfomation oneLine-moreEllipsis">
-                        <div class="songTitle oneLine-moreEllipsis">${data.name}</div>
-                        <div class="subTitle oneLine-moreEllipsis">
-                            <svg class="icon sqIcon" aria-hidden="true">
-                                <use xlink:href="#icon-sq"></use>
+               <li class="li-songItem">
+                        <div class="songInfomation oneLine-moreEllipsis">
+                            <div class="songTitle oneLine-moreEllipsis">${data.name}</div>
+                            <div class="subTitle oneLine-moreEllipsis">
+                                <svg class="icon sqIcon" aria-hidden="true">
+                                    <use xlink:href="#icon-sq"></use>
+                                </svg>
+                              ${data.singer}
+                          </div>
+                        </div>
+                        <div class="playBtnWrapper">
+                            <svg class="icon playbtn" aria-hidden="true" data-id="${data.id}">
+                                <use xlink:href="#icon-play"></use>
                             </svg>
-                          ${data.singer}
-                      </div>
-                    </div>
-                    <div class="playBtnWrapper">
-                        <svg class="icon playbtn" aria-hidden="true">
-                            <use xlink:href="#icon-play"></use>
-                        </svg>
-                    </div>
+                        </div>
                </li>                 
             `)
             return $li
@@ -56,6 +56,13 @@
             this.model.fetch().then((data) => {
                 this.model.data = data
                 this.view.render(this.model.data)
+                this.bindEvents()
+            })
+        },
+        bindEvents() {
+            $(this.view.el).find(".ul-newSongItemList").on("touchend", ".playbtn", (e) => {
+                let id = $(e.currentTarget).attr("data-id")
+                window.location.href = `./song.html?id=${id}`
             })
         }
     }

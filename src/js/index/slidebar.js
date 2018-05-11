@@ -42,11 +42,11 @@
         },
         bindLiHighLight() {
             $(this.view.el).find(".nav-slide-item").on("touchend", (e) => {
-                window.EVENT_HUB.emit("clickToSlide", $(e.currentTarget).attr("data-index"))
+                window.ControllerTools.EVENT_HUB.emit("clickToSlide", $(e.currentTarget).attr("data-index"))
             })
         },
         listenerToSlideChange() {
-            window.EVENT_HUB.on("slidechange", (data) => {
+            window.ControllerTools.EVENT_HUB.on("slidechange", (data) => {
                 $(this.view.el).find(".nav-slide-item.active").removeClass("active")
                 let $targetLi = $(this.view.el).find(`[data-index='${data}']`)
                 $targetLi.addClass("active")

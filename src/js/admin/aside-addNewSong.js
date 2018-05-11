@@ -42,7 +42,7 @@
                            // 文件添加进队列后,处理相关的事情
                        });
                        if (this.fileLoadLock) {
-                           window.NOTIFICATION_TOOLS.showToast("error", "有文件正在上传，请稍后上传")
+                           window.ViewTools.showToast("error", "有文件正在上传，请稍后上传")
                            up.removeFile(up.files[up.files.length - 1])
                            return false
                        }
@@ -54,7 +54,7 @@
                    'UploadProgress': function(up, file) {
                        // 每个文件上传时,处理相关的事情
                        //console.log("up", up.total.percent) 获得进度
-                       window.EVENT_HUB.emit("addNewSongProgress", up)
+                       window.ControllerTools.EVENT_HUB.emit("addNewSongProgress", up)
                    },
                    'FileUploaded': (up, file, info) => {
                        // 每个文件上传成功后,处理相关的事情
@@ -73,7 +73,7 @@
                        var response = JSON.parse(info.response)
                        var encodeName = encodeURIComponent(response.key)
                        var sourceLink = "http://" + domain + "/" + encodeName
-                       window.EVENT_HUB.emit("uploadsuccess", {url: sourceLink, name: response.key, type: "新增",})
+                       window.ControllerTools.EVENT_HUB.emit("uploadsuccess", {url: sourceLink, name: response.key, type: "新增",})
                    },
                    'Error': function(up, err, errTip) {
                        //上传出错时,处理相关的事情

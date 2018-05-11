@@ -1,5 +1,5 @@
 {
-    let EVENT_HUB_TOOLS = window.EVENT_HUB
+    let EVENT_HUB_TOOLS = window.ControllerTools.EVENT_HUB
     let view = {
         el: ".songList",
         $tbody: "",
@@ -130,7 +130,7 @@
                         Object.assign(newObj, songItem)
                     }
                 }
-                window.EVENT_HUB.emit("uploadsuccess", newObj)
+                EVENT_HUB_TOOLS.EVENT_HUB.emit("uploadsuccess", newObj)
             })
         }
     }

@@ -1,6 +1,6 @@
 {
-    let TOAST_TOOLS = window.NOTIFICATION_TOOLS
-    let EVENT_HUB_TOOLS = window.EVENT_HUB
+    let TOAST_TOOLS = window.ViewTools
+    let EVENT_HUB_TOOLS = window.ControllerTools.EVENT_HUB
     let view = {
         el: ".page",
         template: `<div class="addOrEditSongModal-wrapper animated fadeIn" data-songid="__id__">

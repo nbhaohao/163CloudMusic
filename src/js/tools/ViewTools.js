@@ -1,4 +1,8 @@
-window.NOTIFICATION_TOOLS = {
+window.ViewTools = {
+    setFontSize() {
+        let fontSize = document.documentElement.clientWidth / 10
+        $("html").css("font-size", fontSize + "px")
+    },
     showToast: function (type, text) {
         new Noty({
             type: type,
@@ -7,7 +11,5 @@ window.NOTIFICATION_TOOLS = {
             layout: "topCenter",
             theme: 'bootstrap-v4',
         }).show();
-    }
+    },
 }
-//window.NOTIFICATION_TOOLS.showToast("success", "")
-//window.NOTIFICATION_TOOLS.showToast("error", "")

@@ -29,7 +29,7 @@
             this.progressbarView = $(this.view.el).find(".progress-bar")
         },
         listenToAddNewSong() {
-            window.EVENT_HUB.on("addNewSongProgress", (data) => {
+            window.ControllerTools.EVENT_HUB.on("addNewSongProgress", (data) => {
                 this.model.data.songName = data.files[data.files.length - 1].name
                 this.model.data.percent = data.total.percent + "%"
                 if (this.model.data.percent === "100%") {

@@ -49,17 +49,17 @@
                 },
                 on: {
                     slideChangeTransitionEnd: function () {
-                        window.EVENT_HUB.emit("slidechange", this.activeIndex)
+                        window.ControllerTools.EVENT_HUB.emit("slidechange", this.activeIndex)
                         $("main .swiper-scrollbar").removeClass("index0 index1 index2").addClass(`index${this.activeIndex}`)
                     },
                     init: function() {
-                        window.EVENT_HUB.emit("slidechange", "0")
+                        window.ControllerTools.EVENT_HUB.emit("slidechange", "0")
                     },
                 }
             })
         },
         listenerToClickToSlide() {
-            window.EVENT_HUB.on("clickToSlide", (data) => {
+            window.ControllerTools.EVENT_HUB.on("clickToSlide", (data) => {
                 this.mySwiper.slideTo(data)
             })
         },
