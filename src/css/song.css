@@ -1,12 +1,4 @@
 .transToCenter {position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);}
-@keyframes distRotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
 
 
 #app {position: relative;height: 100vh;padding-top:1.86rem;}
@@ -16,12 +8,11 @@
 #app .pointer {top: 0;background: url("../img/pointer.png")no-repeat;width: 2.56rem;height: 3.65rem;display: inline-block;z-index: 2;background-size: contain;position: absolute;left: 45%;}
 #app .dist {position: relative;display: flex;justify-content: center;align-items: center;}
 /*#app .dist .songPhoto {}*/
-#app .dist .distPhoto{animation-play-state: running; animation: distRotate 30s linear infinite;position: relative; background: url("../img/dist.png") no-repeat;width: 7.8rem;height: 7.8rem;background-size: contain;}
-#app .dist .distPhoto::after{content: "";width: 7.8rem;height: 7.8rem;display: block;background-size: contain;background-repeat: no-repeat;}
+#app .dist .distPhoto{transform: rotate(0deg);  position: relative; background: url("../img/dist.png") no-repeat;width: 7.8rem;height: 7.8rem;background-size: contain;}
+#app .dist .distPhoto::after{content: "";width: 7.8rem;height: 7.8rem;display: block;background-size: contain;background-repeat: no-repeat;background-image: url("../img/dist-light.png");}
 #app .dist .distPhoto .songPhoto {background-size: cover;z-index: -1;border-radius: 50%;width: 5rem;height: 5rem;background-repeat: no-repeat;}
 #app .dist .playBtn {width: 2rem;height: 2rem;display: none;}
 #app .dist.active .playBtn {display: block;}
-#app .dist.active .distPhoto {animation-play-state: paused;}
 #app .lync {display: flex;flex-direction: column;align-items: center;padding: 0 0.93rem;margin-top: 0.6rem;}
 #app .lync h2 {font-size:0.48rem;color:#fefefe;white-space:nowrap;text-overflow:ellipsis;}
 #app .lync h2 .letter {margin: 0 6px;}
