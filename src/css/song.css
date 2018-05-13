@@ -1,0 +1,17 @@
+.transToCenter {position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);}
+
+#app {position: relative;height: 100vh;}
+#app::after {position: absolute;top: 0;left: 0;right: 0;bottom: 0;  content: "";background: url("http://p1.music.126.net/WlTNZVu8BZYmHZJdzIOxfw==/45079976764271.jpg?imageView&thumbnail=360y360&quality=75&tostatic=0") no-repeat;background-size: cover;filter: blur(26px);z-index: -2;}
+#app::before {position: absolute;top: 0;left: 0;right: 0;bottom: 0;  content: "";background-color: rgba(8, 7, 7, 0.6);z-index: -1;}
+#app .logo {position: absolute;background:url(//s3.music.126.net/m/s/img/logo.png?0c21b75d22d52b65dc8083343d161fe4) no-repeat;width: 2.66rem;height: 0.45rem;background-size:cover;top: 12px;left: 10px;}
+#app .pointer {background: url("../img/pointer.png")no-repeat;width: 2.56rem;height: 3.65rem;display: inline-block;z-index: 2;background-size: contain;position: absolute;left: 45%;}
+#app .dist {padding-top: 1.86rem;display: flex;justify-content: center;align-items: center;}
+/*#app .dist .songPhoto {}*/
+#app .dist .distPhoto{position: relative; background: url("../img/dist.png") no-repeat;width: 7.8rem;height: 7.8rem;background-size: contain;}
+#app .dist .distPhoto::after{content: "";background: url("../img/dist-light.png") no-repeat;width: 7.8rem;height: 7.8rem;display: block;background-size: contain;}
+#app .dist .distPhoto .songPhoto {border-radius: 50%;width: 6rem;height: 6rem;background: url("http://p1.music.126.net/WlTNZVu8BZYmHZJdzIOxfw==/45079976764271.jpg?imageView&thumbnail=360y360&quality=75&tostatic=0") no-repeat;background-size: contain;z-index: -1;}
+#app .dist .distPhoto .playBtn {width: 2rem;height: 2rem;}
+#app .lync {display: flex;flex-direction: column;align-items: center;padding: 0 0.93rem;margin-top: 0.6rem;}
+#app .lync h2 {font-size:0.48rem;color:#fefefe;white-space:nowrap;text-overflow:ellipsis;}
+#app .lync h2 .letter {margin: 0 6px;}
+#app .lync h2 .singerName {font-weight: 400;color: hsla(0,0%,100%,.6);font-size: 0.426rem;}

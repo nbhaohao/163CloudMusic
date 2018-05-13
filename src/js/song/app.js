@@ -5,8 +5,17 @@
         $audio: "",
         template: `
             <audio class="musicplayer" src="{{ url }}"></audio>
-            <button class="play">播放</button>
-            <button class="pause">暂停</button>
+            <span class="logo"></span>
+            <span class="pointer"></span>
+            <div class="dist">
+                <div class="distPhoto">
+                    <div class="songPhoto transToCenter"></div>
+                    <img src="./img/playBtn.svg" alt="" class="playBtn transToCenter">
+                </div>
+            </div>
+            <div class="lync">
+                <h2>Mother<span class="letter">-</span><span class="singerName">久石譲</span></h2>
+            </div>
         `,
         render(data) {
             $(this.el).html(this.template.replace("{{ url }}", data.url))
@@ -48,12 +57,12 @@
             })
         },
         bindEvents() {
-            $(this.view.el).find(".play").on("touchend", (e) => {
-                this.view.play()
-            })
-            $(this.view.el).find(".pause").on("touchend", (e) => {
-                this.view.pause()
-            })
+            // $(this.view.el).find(".play").on("touchend", (e) => {
+            //     this.view.play()
+            // })
+            // $(this.view.el).find(".pause").on("touchend", (e) => {
+            //     this.view.pause()
+            // })
         }
     }
     controller.init(view, model)
