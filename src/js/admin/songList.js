@@ -16,13 +16,14 @@
                                 <td>音乐标题</td>
                                 <td>歌手</td>
                                 <td>外链</td>
+                                <td>封面</td>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
                 </div>`,
         getOneSongTemplate(item) {
-            let arr = ["index", "name", "singer", "url"]
+            let arr = ["index", "name", "singer", "url", "cover"]
             let $tr = $("<tr></tr>")
             $tr.attr("data-songid", item.id)
             $tr.addClass("songItemTR")
@@ -130,7 +131,7 @@
                         Object.assign(newObj, songItem)
                     }
                 }
-                EVENT_HUB_TOOLS.EVENT_HUB.emit("uploadsuccess", newObj)
+                EVENT_HUB_TOOLS.emit("uploadsuccess", newObj)
             })
         }
     }

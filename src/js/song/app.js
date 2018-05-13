@@ -7,18 +7,22 @@
             <audio class="musicplayer" src="{{ url }}"></audio>
             <span class="logo"></span>
             <span class="pointer"></span>
-            <div class="dist">
+            <div class="dist active">
                 <div class="distPhoto">
                     <div class="songPhoto transToCenter"></div>
-                    <img src="./img/playBtn.svg" alt="" class="playBtn transToCenter">
                 </div>
+                <img src="./img/playBtn.svg" alt="" class="playBtn transToCenter">
             </div>
             <div class="lync">
                 <h2>Mother<span class="letter">-</span><span class="singerName">久石譲</span></h2>
             </div>
+            <footer><span class="exit-Btn">返回主页面</span></footer>
         `,
         render(data) {
+            let templateCopy = this.template
             $(this.el).html(this.template.replace("{{ url }}", data.url))
+            $(this.el).find(".songPhoto").css("background-image", `url("${data.cover}")`)
+            $("style").append(`#app::after{background-image: url("${data.cover}");}`)
         },
         play() {
             this.$audio[0].play()
@@ -29,16 +33,19 @@
     }
     let model = {
         data: {
-            id: "",
-            name: "",
-            singer: "",
-            url: "",
+            song: {
+                id: "",
+                name: "",
+                singer: "",
+                url: "",
+            },
+            status: "pause",
         },
         get(id) {
             var query = new AV.Query('Song')
             return query.get(id).then((song) => {
                 this.data.id = song.id
-                Object.assign(this.data, song.attributes)
+                Object.assign(this.data.song, song.attributes)
                 return song
             })
         },
@@ -49,7 +56,7 @@
             this.model = model
             let id = ControllerTools.getLocationQueryParam("id")
             this.model.get(id).then((data) => {
-                this.view.render(this.model.data)
+                this.view.render(this.model.data.song)
                 this.view.$audio = $(this.view.el).find(".musicplayer")
                 this.bindEvents()
             }, (error) => {
@@ -57,12 +64,27 @@
             })
         },
         bindEvents() {
-            // $(this.view.el).find(".play").on("touchend", (e) => {
-            //     this.view.play()
-            // })
-            // $(this.view.el).find(".pause").on("touchend", (e) => {
-            //     this.view.pause()
-            // })
+            this.songPlayAndPauseEvent()
+            this.exitBtnEvent()
+        },
+        exitBtnEvent() {
+            $(this.view.el).find(".exit-Btn").on("touchend", (e) => {
+                window.location.href = "./index.html"
+            })
+        },
+        songPlayAndPauseEvent() {
+            $(this.view.el).on("touchend", (e) => {
+                if (this.model.data.status === "pause") {
+                    $(this.view.el).find(".dist").removeClass("active")
+                    this.view.play()
+                    this.model.data.status = "play"
+                }
+                else if (this.model.data.status === "play") {
+                    $(this.view.el).find(".dist").addClass("active")
+                    this.view.pause()
+                    this.model.data.status = "pause"
+                }
+            })
         }
     }
     controller.init(view, model)
