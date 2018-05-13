@@ -17,6 +17,7 @@
                 <span class="text">搜索</span>
             </div>
         </li>
+        <div class="swiper-scrollbar index0"></div>
         `,
         render(data) {
             $(this.el).html(this.template)
@@ -34,7 +35,7 @@
         },
         initFakeClass() {
             $(this.view.el).find(".nav-slide-item").each(function(index, element) {
-                $("style").append(`main .swiper-scrollbar.index${index} .swiper-scrollbar-drag::after {width:${element.clientWidth}px;}`)
+                $("style").append(`nav .swiper-scrollbar.index${index} .swiper-scrollbar-drag::after {width:${element.clientWidth}px;}`)
             })
         },
         bindEvents() {

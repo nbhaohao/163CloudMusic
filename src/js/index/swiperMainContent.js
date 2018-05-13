@@ -8,7 +8,6 @@
                     <div class="swiper-slide">456</div>
                     <div class="swiper-slide">777</div>
                 </div>
-                <div class="swiper-scrollbar index0"></div>
             </div>
         `,
         render(data) {
@@ -44,12 +43,12 @@
                 direction: 'horizontal',
                 // 如果需要滚动条
                 scrollbar: {
-                    el: '.swiper-scrollbar',
+                    el: 'nav .swiper-scrollbar',
                 },
                 on: {
                     slideChangeTransitionEnd: function () {
                         window.ControllerTools.EVENT_HUB.emit("slidechange", this.activeIndex)
-                        $("main .swiper-scrollbar").removeClass("index0 index1 index2").addClass(`index${this.activeIndex}`)
+                        $("nav .swiper-scrollbar").removeClass("index0 index1 index2").addClass(`index${this.activeIndex}`)
                     },
                     init: function() {
                         window.ControllerTools.EVENT_HUB.emit("slidechange", "0")

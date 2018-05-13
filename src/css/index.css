@@ -1,5 +1,5 @@
 .page {}
-header {position: fixed;top: 0;width: 100%;z-index: 2;}
+header {position: fixed;top: 0;width: 100%;z-index: 4;}
 header .title {background-color: #d43c33;display: flex;justify-content: space-between;padding: 0 10px;height: 2rem;align-items: center;}
 header .title svg.musicicon {width: 0.68rem;height: 0.68rem;vertical-align: top;fill: white;}
 header .title .applicationName {display: flex;align-items: center;}
@@ -12,9 +12,9 @@ header .slidebar .nav-slide-item .text { font-family: Helvetica sans-self; font-
 header .slidebar .nav-slide-item.active .text {color: #d33a31;}
 main {margin-top: 3.25rem;z-index: 3;}
 main .swiper-container {z-index: 3;}
-main .swiper-container-horizontal>.swiper-scrollbar {top: 0;background-color: transparent;left: 0;width: 100%;position: fixed;top: 3.25rem;}
-main .swiper-scrollbar-drag {background-color: transparent;height: 2px;transition: all 0.5s;border-radius: 0;position: relative;}
-main .swiper-scrollbar-drag::after {content: ""; background-color: #d33a31;height: 2px;position: absolute;bottom: 2px;transform: translateX(-50%);left: 50%;transition: all 0.3s;}
+nav .swiper-scrollbar {top: 0;background-color: transparent;left: 0;width: 100%;position: fixed;top: 3.25rem;bottom: 3px;z-index: 50;height: 5px;}
+nav .swiper-scrollbar-drag {background-color: transparent;height: 2px;transition: all 0.5s;border-radius: 0;position: relative;}
+nav .swiper-scrollbar-drag::after {content: ""; background-color: #d33a31;height: 2px;position: absolute;bottom: 2px;transform: translateX(-50%);left: 50%;transition: all 0.3s;}
 main .recommendMusicList {padding-top: 0.625rem;padding-bottom: 0.75rem;}
 main .content-title {font-size: 0.52rem;position: relative;padding-left: 0.3rem;margin-bottom: 0.4rem;}
 main .content-title::after {content: "";position: absolute;left: 0;width: 2px;height: 80%;background-color:#d33a31;top: 50%;transform: translateY(-50%);}
