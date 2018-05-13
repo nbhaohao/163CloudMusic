@@ -60,9 +60,8 @@
             })
         },
         bindEvents() {
-            $(this.view.el).find(".ul-newSongItemList").on("touchend", ".playbtn", (e) => {
-                let id = $(e.currentTarget).attr("data-id")
-                window.location.href = `./song.html?id=${id}`
+            window.ControllerTools.EVENT_HUB.on("playSong", (data) => {
+                window.location.href = `./song.html?id=${data}`
             })
         }
     }

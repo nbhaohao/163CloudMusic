@@ -25,6 +25,7 @@
             this.loadModule("./js/index/recommendMusic.js")
             this.loadModule("./js/index/newSongList.js")
             this.setMarginTopAndSlideMinHeight()
+            this.bindEvents()
         },
         loadModule(scriptName) {
             let script = document.createElement("script")
@@ -61,6 +62,21 @@
                 this.mySwiper.slideTo(data)
             })
         },
+        bindEvents() {
+            let touchFlag = true
+            $(this.view.el).on("touchstart", (e) => {
+                touchFlag = true
+            })
+            $(this.view.el).on("touchmove", (e) => {
+                touchFlag = false
+            })
+            $(this.view.el).on("touchend", ".li-songItem",(e) => {
+                if (!touchFlag) {
+                    return
+                }
+                window.ControllerTools.EVENT_HUB.emit("playSong", $(e.currentTarget).find("svg.playbtn").attr("data-id"))
+            })
+        }
     }
     controller.init(view, model)
 }
