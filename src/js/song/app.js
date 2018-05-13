@@ -4,6 +4,7 @@
     let touchendOrClick = window.ViewTools.getClickEventName()
     let view = {
         el: "#app",
+        playsHolders: ["url", "name", "singer"],
         $audio: "",
         rotateDeg: 0,
         template: `
@@ -17,15 +18,37 @@
                 <img src="./img/playBtn.svg" alt="" class="playBtn transToCenter">
             </div>
             <div class="lync">
-                <h2>Mother<span class="letter">-</span><span class="singerName">久石譲</span></h2>
+                <h2>{{ name }}<span class="letter">-</span><span class="singerName">{{ singer }}</span></h2>
+                <div class="linesWrapper">
+                    <div class="lines"></div>
+                </div>
             </div>
             <footer><span class="exit-Btn">返回主页面</span></footer>
         `,
         render(data) {
             let templateCopy = this.template
-            $(this.el).html(this.template.replace("{{ url }}", data.url))
+            this.playsHolders.map((element) => {
+                templateCopy = templateCopy.replace(`{{ ${element} }}`, data[element])
+            })
+            $(this.el).html(templateCopy)
             $(this.el).find(".songPhoto").css("background-image", `url("${data.cover}")`)
             $("style").append(`#app::after{background-image: url("${data.cover}");}`)
+            let $lrcDiv = $(this.el).find(".lines")
+            data.lrc.split("\n").map((string) => {
+                let dataArr = string.split("]")
+                let time = this.transStrTimeToSecs((dataArr[0]).replace("[", ""))
+                let content = dataArr[1]
+                let temp = document.createElement("p")
+                temp.textContent = content
+                temp.dataset.time = time
+                $lrcDiv.append(temp)
+            })
+        },
+        transStrTimeToSecs(strTime) {
+            let newArr = strTime.split(":")
+            let minutes = newArr[0]
+            let seconds = newArr[1]
+            return parseInt(minutes, 10) * 60 + parseFloat(seconds)
         },
         play() {
             this.$audio[0].play()
@@ -70,6 +93,35 @@
             this.songPlayAndPauseEvent()
             this.exitBtnEvent()
             this.audioMusicFinishEvent()
+            this.scrollLrc()
+        },
+        scrollLrc() {
+          this.lrcLinesWrapper = $(this.view.el).find(".lines")
+          this.allLrcLines = this.lrcLinesWrapper.find("p")
+          this.view.$audio.on("timeupdate", (e) => {
+              this.showTargetLrc(e.currentTarget.currentTime)
+          })
+        },
+        showTargetLrc(time) {
+            for (let i = 0; i < this.allLrcLines.length; i++) {
+                let pElement = this.allLrcLines[i]
+                let result
+                if (i === this.allLrcLines.length - 1) {
+                    result = pElement
+                } else {
+                    let currentTime = parseInt(pElement.dataset.time, 10)
+                    let nextTime = parseInt(this.allLrcLines[i + 1].dataset.time, 10)
+                    if (currentTime <= time && time < nextTime) {
+                        result = pElement
+                    }
+                }
+                if (result) {
+                    $(this.view.el).find("[data-time].active").removeClass("active")
+                    $(result).addClass("active")
+                    this.lrcLinesWrapper.css("top", `-${result.offsetTop - 45}px`)
+                    break
+                }
+            }
         },
         audioMusicFinishEvent() {
           this.view.$audio.on("ended", (e) => {
@@ -86,7 +138,19 @@
             })
         },
         songPlayAndPauseEvent() {
+            let isMove = true
+            if (!isPc) {
+                $(this.view.el).on("touchstart", (e) => {
+                    isMove = true
+                })
+                $(this.view.el).on("touchmove", (e) => {
+                    isMove = false
+                })
+            }
             $(this.view.el).on(touchendOrClick, (e) => {
+                if (!isPc && !isMove) {
+                    return
+                }
                 if (this.model.data.status === "pause") {
                     $(this.view.el).find(".dist").removeClass("active")
                     this.view.play()

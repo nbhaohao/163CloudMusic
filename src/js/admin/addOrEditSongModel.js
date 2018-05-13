@@ -16,6 +16,7 @@
                         <p class="flexwrapper"><span>歌手：</span><input title="歌手" song-name="singer" type="text" value="__singer__" class="form-control"></p>
                         <p class="flexwrapper"><span>外链：</span><input title="外链" song-name="url" type="text" value="__url__" class="form-control"></p>
                         <p class="flexwrapper"><span>封面链接：</span><input title="封面链接" song-name="cover" type="text" value="__cover__" class="form-control"></p>
+                        <p class="flexwrapper"><span>lrc歌词：</span><textarea rows="6" title="歌词" song-name="lrc" type="text" class="form-control">__lrc__</textarea></p>
                     </div>
                     <div class="footer-wrapper">
                         <button class="btn btn-success btn-saveNewSong">保存</button>
@@ -24,7 +25,7 @@
                 </div>
             </div>`,
         render(data) {
-            let forArr = "id type name singer url cover".split(" ")
+            let forArr = "id type name singer url cover lrc".split(" ")
             let temp = this.template
             forArr.map((value) => {temp = temp.replace(`__${value}__`, data[value] || "")})
             $(this.el).append(temp)
@@ -36,6 +37,7 @@
             "singer": "",
             "url": "",
             "cover": "",
+            "lrc": "",
         },
         addNewSong() {
             var SongObject = AV.Object.extend('Song');

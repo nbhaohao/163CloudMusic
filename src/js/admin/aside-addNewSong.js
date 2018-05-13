@@ -32,7 +32,7 @@
                // p82z3ssr5.bkt.clouddn.com
                get_new_uptoken: false,  //设置上传文件的时候是否每次都重新获取新的token
                // container: this.$View.find("#upNewSongBtn"),           //上传区域DOM ID，默认是browser_button的父元素，
-               max_file_size: '4mb',           //最大文件体积限制
+               max_file_size: '6mb',           //最大文件体积限制
                dragdrop: true,                   //开启可拖曳上传
                drop_element: "upNewSongDragArea",        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
                auto_start: true,                 //选择文件后自动上传，若关闭需要自己绑定事件触发上传

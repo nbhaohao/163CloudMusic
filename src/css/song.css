@@ -1,21 +1,25 @@
 .transToCenter {position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);}
-
-
 #app {position: relative;height: 100vh;padding-top:1.86rem;}
 #app::after {position: absolute;top: 0;left: 0;right: 0;bottom: 0;  content: "";background-repeat: no-repeat;background-size: cover;filter: blur(10px);z-index: -2;}
 #app::before {position: absolute;top: 0;left: 0;right: 0;bottom: 0;  content: "";background-color: rgba(8, 7, 7, 0.6);z-index: -1;}
 #app .logo {position: absolute;background:url(//s3.music.126.net/m/s/img/logo.png?0c21b75d22d52b65dc8083343d161fe4) no-repeat;width: 2.66rem;height: 0.45rem;background-size:cover;top: 12px;left: 10px;}
-#app .pointer {top: 0;background: url("../img/pointer.png")no-repeat;width: 2.56rem;height: 3.65rem;display: inline-block;z-index: 2;background-size: contain;position: absolute;left: 45%;}
+#app .pointer {transform: rotate(0deg);transition: transform 0.6s;  transform-origin: 3px 3px;top: 0;background: url("../img/pointer.png")no-repeat;width: 2.56rem;height: 3.65rem;display: inline-block;z-index: 2;background-size: contain;position: absolute;left: 45%;}
 #app .dist {position: relative;display: flex;justify-content: center;align-items: center;}
 /*#app .dist .songPhoto {}*/
+#app .pointer.active {transform: rotate(-24deg);}
 #app .dist .distPhoto{transform: rotate(0deg);  position: relative; background: url("../img/dist.png") no-repeat;width: 7.8rem;height: 7.8rem;background-size: contain;}
 #app .dist .distPhoto::after{content: "";width: 7.8rem;height: 7.8rem;display: block;background-size: contain;background-repeat: no-repeat;background-image: url("../img/dist-light.png");}
 #app .dist .distPhoto .songPhoto {background-size: cover;z-index: -1;border-radius: 50%;width: 5rem;height: 5rem;background-repeat: no-repeat;}
 #app .dist .playBtn {width: 2rem;height: 2rem;display: none;}
 #app .dist.active .playBtn {display: block;}
-#app .lync {display: flex;flex-direction: column;align-items: center;padding: 0 0.93rem;margin-top: 0.6rem;}
-#app .lync h2 {font-size:0.48rem;color:#fefefe;white-space:nowrap;text-overflow:ellipsis;}
+#app .lync {padding: 0 0.93rem;margin-top: 0.6rem;}
+#app .lync h2 {font-size:0.48rem;color:#fefefe;white-space:nowrap;text-overflow:ellipsis;text-align: center;}
 #app .lync h2 .letter {margin: 0 6px;}
 #app .lync h2 .singerName {font-weight: 400;color: hsla(0,0%,100%,.6);font-size: 0.426rem;}
-#app footer {position: absolute;bottom:0;padding-bottom: 0.6rem;text-align: center;width: 100%;}
-#app footer .exit-Btn {color:#d33a31;border:1px solid #d33a31;border-radius: 40px;background-color: transparent;font-size: 0.48rem;padding: 0.4rem 1.2rem;}
+.lync .linesWrapper {height: 132px;overflow: hidden;margin-top: 20px;}
+.lync .lines {position: relative;top: 0;transition: top 0.6s;}
+.lync .lines [data-time] {transition: all 1s;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.lync .lines [data-time].active {color: rgb(255, 255, 255);font-size: 17px;}
+.lync .lines > p {font-size: 16px;color: hsla(0,0%,100%,.6);text-align: center;line-height:1.5;padding: 10px 0;-webkit-transform-style: preserve-3d;transform-style:preserve-3d;}
+#app footer {position: absolute;bottom:0;padding-bottom: 0.4rem;text-align: center;width: 100%;}
+#app footer .exit-Btn {cursor: pointer;color:#d33a31;border:1px solid #d33a31;border-radius: 40px;background-color: transparent;font-size: 0.48rem;padding: 0.4rem 1.2rem;}
