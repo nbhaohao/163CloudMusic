@@ -1,4 +1,6 @@
 {
+    let isPc = window.ViewTools.isPcUser()
+    let touchendOrClick = window.ViewTools.getClickEventName()
     let view = {
         el: "main",
         template: `
@@ -64,14 +66,16 @@
         },
         bindEvents() {
             let touchFlag = true
-            $(this.view.el).on("touchstart", (e) => {
-                touchFlag = true
-            })
-            $(this.view.el).on("touchmove", (e) => {
-                touchFlag = false
-            })
-            $(this.view.el).on("touchend", ".li-songItem",(e) => {
-                if (!touchFlag) {
+            if (!isPc) {
+                $(this.view.el).on("touchstart", (e) => {
+                    touchFlag = true
+                })
+                $(this.view.el).on("touchmove", (e) => {
+                    touchFlag = false
+                })
+            }
+            $(this.view.el).on(touchendOrClick, ".li-songItem",(e) => {
+                if (!touchFlag && !isPc) {
                     return
                 }
                 window.ControllerTools.EVENT_HUB.emit("playSong", $(e.currentTarget).find("svg.playbtn").attr("data-id"))

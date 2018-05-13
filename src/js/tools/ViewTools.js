@@ -1,9 +1,12 @@
 window.ViewTools = {
     setFontSize() {
         let fontSize = document.documentElement.clientWidth / 10
+        if (fontSize > 44) {
+            fontSize = 44
+        }
         $("html").css("font-size", fontSize + "px")
     },
-    showToast: function (type, text) {
+    showToast(type, text) {
         new Noty({
             type: type,
             text: text,
@@ -11,5 +14,14 @@ window.ViewTools = {
             layout: "topCenter",
             theme: 'bootstrap-v4',
         }).show();
+    },
+    isPcUser() {
+        return window.ontouchstart === undefined
+    },
+    getClickEventName() {
+        if (this.isPcUser()) {
+            return "click"
+        }
+        return "touchend"
     },
 }

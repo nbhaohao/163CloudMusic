@@ -1,4 +1,5 @@
 {
+    let touchendOrClick = window.ViewTools.getClickEventName()
     let view = {
         el: ".slidebar",
         template: `
@@ -34,15 +35,17 @@
             this.listenerToSlideChange()
         },
         initFakeClass() {
-            $(this.view.el).find(".nav-slide-item").each(function(index, element) {
-                $("style").append(`nav .swiper-scrollbar.index${index} .swiper-scrollbar-drag::after {width:${element.clientWidth}px;}`)
-            })
+            setTimeout(() => {
+                $(this.view.el).find(".nav-slide-item").each(function(index, element) {
+                    $("style").append(`nav .swiper-scrollbar.index${index} .swiper-scrollbar-drag::after {width:${element.clientWidth}px;}`)
+                })
+            }, 0)
         },
         bindEvents() {
             this.bindLiHighLight()
         },
         bindLiHighLight() {
-            $(this.view.el).find(".nav-slide-item").on("touchend", (e) => {
+            $(this.view.el).find(".nav-slide-item").on(touchendOrClick, (e) => {
                 window.ControllerTools.EVENT_HUB.emit("clickToSlide", $(e.currentTarget).attr("data-index"))
             })
         },

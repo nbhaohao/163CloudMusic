@@ -1,5 +1,7 @@
 {
     let ControllerTools = window.ControllerTools
+    let isPc = window.ViewTools.isPcUser()
+    let touchendOrClick = window.ViewTools.getClickEventName()
     let view = {
         el: "#app",
         $audio: "",
@@ -71,20 +73,20 @@
         },
         audioMusicFinishEvent() {
           this.view.$audio.on("ended", (e) => {
-              $(this.view.el).trigger("touchend")
+              $(this.view.el).trigger(touchendOrClick)
               let distDiv = $(this.view.el).find(".distPhoto")
               this.view.rotateDeg = 0
               distDiv.css("transform", `rotate(${this.view.rotateDeg}deg)`)
           })
         },
         exitBtnEvent() {
-            $(this.view.el).find(".exit-Btn").on("touchend", (e) => {
+            $(this.view.el).find(".exit-Btn").on(touchendOrClick, (e) => {
                 window.location.href = "./index.html"
                 e.stopPropagation()
             })
         },
         songPlayAndPauseEvent() {
-            $(this.view.el).on("touchend", (e) => {
+            $(this.view.el).on(touchendOrClick, (e) => {
                 if (this.model.data.status === "pause") {
                     $(this.view.el).find(".dist").removeClass("active")
                     this.view.play()
