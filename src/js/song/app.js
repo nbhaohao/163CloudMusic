@@ -70,6 +70,7 @@
         exitBtnEvent() {
             $(this.view.el).find(".exit-Btn").on("touchend", (e) => {
                 window.location.href = "./index.html"
+                e.stopPropagation()
             })
         },
         songPlayAndPauseEvent() {
