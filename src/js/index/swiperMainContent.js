@@ -34,7 +34,6 @@
         },
         setMarginTopAndSlideMinHeight() {
             let headerHeight = $("header .title").height() + $("header .slidebar").height()
-            $(this.view.el).css("margin-top", String(headerHeight) + "px")
             let restHeight = document.documentElement.clientHeight - headerHeight
             $(this.view.el).find(".swiper-slide").each((index, element) => {
                 $(element).css("min-height", String(restHeight) + "px")

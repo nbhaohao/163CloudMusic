@@ -10,7 +10,7 @@
                             <use xlink:href="#icon-musicicon"></use>
                         </svg>
                     </div>
-                    <img src="http://p1.music.126.net/VIJW3c08hcht9gUm20wsaA==/18961078021598699.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp" class="songPhoto">
+                    <img src="./img/test1.jpg" class="songPhoto">
                     <p class="songIntroduction">呵呵我呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈哈哈</p>
                 </li>
                <li>
@@ -19,7 +19,7 @@
                             <use xlink:href="#icon-musicicon"></use>
                         </svg>
                     </div>
-                    <img src="http://p1.music.126.net/VIJW3c08hcht9gUm20wsaA==/18961078021598699.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp" class="songPhoto">
+                    <img src="./img/test1.jpg" class="songPhoto">
                     <p class="songIntroduction">呵呵我呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈哈哈</p>
                 </li>
                 <li>
@@ -28,7 +28,7 @@
                             <use xlink:href="#icon-musicicon"></use>
                         </svg>
                     </div>
-                    <img src="http://p1.music.126.net/VIJW3c08hcht9gUm20wsaA==/18961078021598699.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp" class="songPhoto">
+                    <img src="./img/test1.jpg" class="songPhoto">
                     <p class="songIntroduction">呵呵我呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈哈哈</p>
                 </li>
                 <li>
@@ -37,7 +37,7 @@
                             <use xlink:href="#icon-musicicon"></use>
                         </svg>
                     </div>
-                    <img src="http://p1.music.126.net/VIJW3c08hcht9gUm20wsaA==/18961078021598699.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp" class="songPhoto">
+                    <img src="./img/test1.jpg" class="songPhoto">
                     <p class="songIntroduction">呵呵我呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈哈哈</p>
                 </li>
                <li>
@@ -46,7 +46,7 @@
                             <use xlink:href="#icon-musicicon"></use>
                         </svg>
                     </div>
-                    <img src="http://p1.music.126.net/VIJW3c08hcht9gUm20wsaA==/18961078021598699.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp" class="songPhoto">
+                    <img src="./img/test1.jpg" class="songPhoto">
                     <p class="songIntroduction">呵呵我呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈哈哈</p>
                 </li>
                 <li>
@@ -55,7 +55,7 @@
                             <use xlink:href="#icon-musicicon"></use>
                         </svg>
                     </div>
-                    <img src="http://p1.music.126.net/VIJW3c08hcht9gUm20wsaA==/18961078021598699.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp" class="songPhoto">
+                    <img src="./img/test1.jpg" class="songPhoto">
                     <p class="songIntroduction">呵呵我呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈呵呵我哈哈哈哈</p>
                 </li>
             </ul>
