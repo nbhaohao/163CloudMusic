@@ -13,23 +13,23 @@
 </head>
 <body>
     <div class="page">
-        <header>
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-music"></use>
-            </svg>
-            <span class="css11cb9313881a2f7">网易云音乐后台管理</span>
-        </header>
-        <main>
-            <aside>
-            </aside>
-            <div class="songList"></div>
-        </main>
-        <footer>
-            <div class="loadInfoWrapper"></div>
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated"></div>
-            </div>
-        </footer>
+        <header></header>
+        <div class="tabDiv songManage active">
+            <main>
+                <aside>
+                </aside>
+                <div class="songList"></div>
+            </main>
+            <footer>
+                <div class="loadInfoWrapper"></div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated"></div>
+                </div>
+            </footer>
+        </div>
+        <div class="tabDiv songListManage">
+            <div class="collectionTableWrapper"></div>
+        </div>
     </div>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
@@ -41,10 +41,12 @@
     <script src="../node_modules/plupload/js/moxie.min.js"></script>
     <script src="../node_modules/plupload/js/plupload.min.js"></script>
     <script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
+    <script src="js/admin/toolBar.js"></script>
     <script src="js/admin/aside-addNewSong.js"></script>
     <script src="js/admin/songList.js"></script>
     <script src="js/admin/loadProgressBar.js"></script>
     <script src="js/admin/addOrEditSongModel.js"></script>
-
+    <script src="js/admin/songsCollection.js"></script>
+    <script src="js/admin/editSongCollectionInfoModel.js"></script>
 </body>
 </html>
