@@ -32,8 +32,15 @@ main .content-title::after {content: "";position: absolute;left: 0;width: 2px;he
 .ul-newSongItemList > li.li-songItem .songInfomation .subTitle .sqIcon {vertical-align: bottom;}
 .ul-newSongItemList > li.li-songItem .playbtn {width: 0.6875rem;height: 0.6875rem;}
 .newSongList .ul-newSongItemList > li.li-songItem .playBtnWrapper {padding: 0 0.3125rem;display: flex;align-items: center;}
-footer {position: relative;display: flex;flex-direction: column;align-items: center;padding-top:16.9%;}
+footer {position: relative;display: flex;flex-direction: column;align-items: center;padding-top:16.9%;margin-top: 20px;}
 footer .bg {width: 100%;background-size: cover;position: absolute;top: 0;z-index: -1;}
 footer .logosvg {width: 6.1rem;height: 1.1rem;}
 footer .openapp {border-radius:38px; font-size:0.42rem;border:1px solid #d33a31;color: #d33a31;margin:0.4rem 0.98rem 0.13rem;padding: 0.25rem 1.26rem;}
 footer .copyright {color:#888;font-size: 12px;transform:scale(0.75);}
+main .popularSongsList {padding-top: 0.5rem;}
+main .popularSongsList .li-c-playSongItem:nth-child(1) .index, main .popularSongsList .li-c-playSongItem:nth-child(2) .index, main .popularSongsList .li-c-playSongItem:nth-child(3) .index {color: #df3436;}
+.loader-inner {position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 10;display: none;align-items: center;justify-content: center;background-color: white;}
+.loader-inner.active {display: flex;}
+.loader-inner > div {
+    background-color: #d43c33;
+}

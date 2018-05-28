@@ -57,6 +57,7 @@
             this.model = model
             this.model.fetch().then((data) => {
                 this.model.data = data
+                window.ControllerTools.EVENT_HUB.emit("get-all-songs", this.model.data)
                 this.view.render(this.model.data)
                 this.bindEvents()
             })
