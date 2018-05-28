@@ -41,6 +41,21 @@ main .popularSongsList {padding-top: 0.5rem;}
 main .popularSongsList .li-c-playSongItem:nth-child(1) .index, main .popularSongsList .li-c-playSongItem:nth-child(2) .index, main .popularSongsList .li-c-playSongItem:nth-child(3) .index {color: #df3436;}
 .loader-inner {position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 10;display: none;align-items: center;justify-content: center;background-color: white;}
 .loader-inner.active {display: flex;}
-.loader-inner > div {
-    background-color: #d43c33;
-}
+.loader-inner > div {background-color: #d43c33;}
+.searchSong-Content {padding: 15px 10px;border-bottom: 1px solid rgba(0,0,0,.1);}
+.input-searchWrapper {position: relative;display: flex;height: 30px;padding-left: 30px;padding-right: 30px;background-color: #ebecec;border-radius:30px;}
+.input-searchWrapper .searchSvg, .input-searchWrapper .closeSvg {fill: #b5b3b3;width: 20px;height: 20px;}
+.input-searchWrapper .searchSvg {position: absolute;top: 50%;transform: translateY(-50%);}
+.input-searchWrapper .svgWrapper {position: absolute;height: 100%;width: 30px;display: flex;align-items: center;justify-content: center;cursor: pointer;}
+.input-searchWrapper .searchSvg {left: 5px;}
+.input-searchWrapper .svgWrapper {right: 0;}
+.input-searchWrapper .closeSvgWrapper {display: none;}
+.input-searchWrapper .closeSvgWrapper.active {display: flex;}
+.input-searchWrapper .input-searchValue, .input-searchWrapper .input-searchValue:focus {border: none;outline: none;}
+.input-searchWrapper .input-searchValue {background-color: transparent;width: 100%;}
+.searchSong-Content-main .h3-c-search-bind {white-space: nowrap;display: none;color: #507daf;height: 50px;margin-left: 10px;padding-right: 10px;font-size: 15px;line-height: 50px;border-bottom: 1px solid rgba(0,0,0,.1);}
+.searchSong-Content-main .h3-c-search-bind.active {display: block;}
+.ul-search-result .search-result-item {display: flex;align-items: center;padding-left: 10px;}
+.ul-search-result .search-result-item .searchSvg {fill:#e8e8e8;width: 15px;height: 15px;}
+.ul-search-result .search-result-item .name {color: #333;font-size: 15px;padding: 12px 0 12px 0px;flex-grow: 1;border-bottom: 1px solid rgba(0, 0, 0, 0.1);margin-left: 10px;}
+::-webkit-scrollbar {display: none;}

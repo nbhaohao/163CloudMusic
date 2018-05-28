@@ -17,8 +17,8 @@
                         <img src="./img/recommand_bg_2x.png" class="bg" alt="">
                     </footer>
                     </div>
-                    <div class="swiper-slide" data-swiper="1"><div class="popularSongsList"></div></div>
-                    <div class="swiper-slide" data-swiper="2">777</div>
+                    <div class="swiper-slide popular" data-swiper="1"><div class="popularSongsList"></div></div>
+                    <div class="swiper-slide" data-swiper="2"><div class="searchSong-Content-main"></div></div>
                 </div>
             </div>
         `,
@@ -45,11 +45,11 @@
             document.body.appendChild(script)
         },
         setMarginTopAndSlideMinHeight() {
-            // let headerHeight = $("header .title").height() + $("header .slidebar").height()
-            // let restHeight = document.documentElement.clientHeight - headerHeight
-            // $(this.view.el).find(".swiper-slide").each((index, element) => {
-            //     $(element).css("min-height", String(restHeight) + "px")
-            // })
+            let headerHeight = $("header .title").height() + $("header .slidebar").height() + 5
+            let restHeight = document.documentElement.clientHeight - headerHeight
+            $(this.view.el).find(".swiper-slide").each((index, element) => {
+                $(element).css("min-height", String(restHeight) + "px")
+            })
         },
         initSwiper() {
             this.mySwiper = new Swiper ('main .swiper-container', {

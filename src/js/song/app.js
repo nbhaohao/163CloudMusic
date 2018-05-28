@@ -133,7 +133,7 @@
         },
         exitBtnEvent() {
             $(this.view.el).find(".exit-Btn").on(touchendOrClick, (e) => {
-                window.location.href = "./index.html"
+                window.history.back()
                 e.stopPropagation()
             })
         },
