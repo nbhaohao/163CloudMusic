@@ -15,6 +15,7 @@
     "jquery": "^3.3.1",
     "leancloud-storage": "^3.6.8",
     "loaders.css": "^0.1.2",
+    "lodash": "^4.17.10",
     "noty": "^3.2.0-beta",
     "plupload": "^2.3.2",
     "qiniu": "^7.1.7",
