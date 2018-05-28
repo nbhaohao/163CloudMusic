@@ -19,7 +19,6 @@
             <div class="hr-title">歌曲列表</div>
         `,
         render(data) {
-            console.log("data", data)
             let props = "title describe".split(" ")
             let temp = this.template
             props.map((value) => {

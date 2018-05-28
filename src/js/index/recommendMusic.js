@@ -55,7 +55,17 @@
           this.bindSongCollectionClick()
         },
         bindSongCollectionClick() {
+            let userMoveFlag = true
+            if (!isPc) {
+                $(this.view.el).on("touchstart", ".songCollection-li", (e) => {
+                  userMoveFlag = true
+                })
+                $(this.view.el).on("touchmove", ".songCollection-li", (e) => {
+                    userMoveFlag = false
+                })
+            }
             $(this.view.el).on(touchendOrClick, ".songCollection-li", (e) => {
+                if (!isPc && !userMoveFlag) {return}
                 let id = $(e.currentTarget).attr("data-id")
                 window.location.href = "./songCollection.html?id=" + id
             })
