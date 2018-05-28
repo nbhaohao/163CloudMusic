@@ -29,10 +29,12 @@
         render(data) {
             $(this.el).html(this.template)
             $(this.el).find(".ul-newSongItemList").empty()
-            data.map((element) => {
-                let $LiItem = this.getOneSongItem(element)
-                $(this.el).find(".ul-newSongItemList").append($LiItem)
-            })
+            for (let i = 0; i < 5; i++) {
+                if (data[i]) {
+                    let $LiItem = this.getOneSongItem(data[i])
+                    $(this.el).find(".ul-newSongItemList").append($LiItem)
+                }
+            }
         },
     }
     let model = {
