@@ -13,7 +13,7 @@
                     <td>编辑</td>
                 </thead>
                 <tbody>
-                        
+             
                 </tbody>
             </table>`,
         render(data) {
@@ -23,13 +23,14 @@
                 let newTr = $(`<tr>
                     <td class="songCollectionId">${item.id}</td>
                     <td>${i + 1}</td>
-                    <td>${item.title}</td>
-                    <td>${item.describe}</td>
-                    <td class="songCollectionPhoto">${item.photoPath}</td>
+                    <td collection-id="title" class="title-td">${item.title}</td>
+                    <td collection-id="describe" class="describe-td">${item.describe}</td>
+                    <td collection-id="photoPath" class="songCollectionPhoto">${item.photoPath}</td>
                     <td><button class="btn btn-success edit-songListInfo-btn">编辑</button></td>
                     </tr>`)
                 $(this.el).find("tbody").append(newTr)
             }
+
         },
     }
     let model = {
@@ -46,7 +47,7 @@
         query(id) {
             let query = new AV.Query('Playlist')
             return query.get(id)
-        }
+        },
     }
     let controller = {
         init(view, model) {
@@ -58,6 +59,20 @@
                 TOAST_TOOLS.showToast("error", "歌单信息获取失败")
             })
             this.bindEvents()
+            EVENT_HUB_TOOLS.on("update-one-tr", (data) => {
+                let allTrs = $(this.view.el).find(".songCollectionId")
+                for (let j = 0; j < allTrs.length; j++) {
+                    let $self = $(allTrs[j])
+                    if ($self.text() === data.id) {
+                        let $parent = $self.closest("tr")
+                        let allTds = $parent.find("[collection-id]")
+                        allTds.each((inde, element) => {
+                            $(element).text(data[$(element).attr("collection-id")])
+                        })
+                        break
+                    }
+                }
+            })
         },
         bindEvents() {
             this.bindEditBtns()
@@ -71,7 +86,6 @@
                 }, (error) => {
                     TOAST_TOOLS.showToast("error", "歌单信息获取失败")
                 })
-
             })
         },
     }

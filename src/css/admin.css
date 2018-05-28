@@ -19,28 +19,39 @@ main aside .dragFileArea {border: 3px dashed #ddd;padding: 12px;display: flex;al
 main .songList {display: flex;flex-direction: column;}
 main .songList .title {display: flex;align-items: center; padding-left: 32px;padding-top: 28px;padding-bottom: 12px; border-bottom: 1px solid rgb(225, 225, 226);color: rgb(51, 51, 51);}
 main .songList .songsNum, .songListManage .songListNum {color: rgb(126, 126, 126);position: relative;top: 4px;margin-left: 16px;}
-main .songList .songListTable, .collectionTableWrapper > table {width: 100%; border-collapse: collapse;flex-grow: 1;overflow-y: auto;position: relative;}
-main .songList .songListTable thead td, .collectionTableWrapper > table thead td {border: 1px solid rgb(225, 225, 226);padding: 10px 8px;color: rgb(105, 105, 105);font-size: 14px;border-top: none;}
+main .songList .songListTable, .collectionTableWrapper > table, .table-c-currentSongList-in {width: 100%; border-collapse: collapse;flex-grow: 1;overflow-y: auto;position: relative;}
+main .songList .songListTable thead td, .collectionTableWrapper > table thead td, .table-c-currentSongList-in td {border: 1px solid rgb(225, 225, 226);padding: 10px 8px;color: rgb(105, 105, 105);font-size: 14px;border-top: none;}
 main .songList .songListTable thead td:first-child, .collectionTableWrapper > table thead td:first-child {border-left: none;width: 60px;}
-.collectionTableWrapper > table thead td:last-child {width: 60px;}
+.table-c-currentSongList-in thead td:first-child {width: 60px;}
+.editSongCollectionModal .table-c-currentSongList-in {display: none}
+.editSongCollectionModal .body-wrapper {max-height: 50vh;overflow: auto;}
+.table-c-currentSongList-in.active {display: table}
+.collectionTableWrapper > table thead td:last-child, .table-c-currentSongList-in thead td:last-child {width: 60px;}
 .collectionTableWrapper > table .songCollectionId {display: none;}
-main .songList .songListTable tbody tr td, .collectionTableWrapper > table tbody tr td {padding:8px;color: rgb(139, 139, 139);}
+main .songList .songListTable tbody tr td, .collectionTableWrapper > table tbody tr td, .table-c-currentSongList-in tbody tr td {padding:8px;color: rgb(139, 139, 139);}
 main .songList .songListTable tbody tr {cursor: pointer;}
+.table-c-currentSongList-in tbody tr td, .table-c-currentSongList-in thead tr td {border-top: 1px solid rgb(225, 225, 226);padding: 4px;}
 main .songList .songListTable tbody tr td:first-child, .collectionTableWrapper > table tbody tr td:first-child {text-align: right;width: 60px;}
 main .songList .songListTable tbody tr td:nth-child(2) {color: rgb(88, 88, 89);}
-main .songList .songListTable tbody tr:nth-child(even), .collectionTableWrapper > table tbody tr:nth-child(even) {background-color: rgb(245, 245, 247);}
-main .songList .songListTable tbody tr:nth-child(odd), .collectionTableWrapper > table tbody tr:nth-child(odd) {background-color: white;}
-main .songList .songListTable tbody tr:hover, .collectionTableWrapper > table tbody tr:hover {background-color: rgb(236, 237, 238);}
-main .songList .songListTable tbody .songItemTR td[song-td='url'], main .songList .songListTable tbody .songItemTR td[song-td='cover'], .collectionTableWrapper > table .songCollectionPhoto {max-width: 200px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-.addOrEditSongModal-wrapper,.editSongCollection-wrapper {position: absolute;top: 0;left: 0;right: 0;bottom: 0;display: flex;flex-direction: column; align-items: center; justify-content: center;padding: 60px 0;z-index: 5;background-color: rgba(0, 0, 0, 0.2);}
-.addOrEditSongModal, .editSongCollectionModal {background-color: white;z-index: 2;width: 600px;border: 1px solid rgba(0,0,0,.2);border-radius: 4px;}
-.addOrEditSongModal .header-wrapper, .editSongCollectionModal .header-wrapper {display: flex;;justify-content: space-between;padding:15px;border-bottom: 1px solid #e9ecef;align-items: center;}
-.addOrEditSongModal .header-wrapper .closeModal, .editSongCollectionModal .header-wrapper .closeModal {width: 24px;height: 24px;cursor: pointer;transition: all 0.2s;}
-.addOrEditSongModal .header-wrapper .closeModal:hover, .editSongCollectionModal .header-wrapper .closeModal:hover {fill: red;}
-.addOrEditSongModal .body-wrapper, .editSongCollectionModal .body-wrapper {padding: 15px;}
-.addOrEditSongModal .footer-wrapper, .editSongCollectionModal .footer-wrapper {padding: 15px;border-top: 1px solid #e9ecef;display: flex;justify-content: flex-end;}
-.addOrEditSongModal .footer-wrapper button, .editSongCollectionModal .footer-wrapper button {margin-right: 16px;}
-.addOrEditSongModal .footer-wrapper button:last-child, .editSongCollectionModal .footer-wrapper button:last-child  {margin-right: 0;}
+main .songList .songListTable tbody tr:nth-child(even), .collectionTableWrapper > table tbody tr:nth-child(even), .table-c-currentSongList-in tbody tr:nth-child(even) {background-color: rgb(245, 245, 247);}
+main .songList .songListTable tbody tr:nth-child(odd), .collectionTableWrapper > table tbody tr:nth-child(odd), .table-c-currentSongList-in tbody tr:nth-child(odd) {background-color: white;}
+main .songList .songListTable tbody tr:hover, .collectionTableWrapper > table tbody tr:hover, .table-c-currentSongList-in tbody tr:hover {background-color: rgb(236, 237, 238);}
+main .songList .songListTable tbody .songItemTR td[song-td='url'], main .songList .songListTable tbody .songItemTR td[song-td='cover'], .collectionTableWrapper > table .songCollectionPhoto,.collectionTableWrapper > table .describe-td {max-width: 200px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.allSongListModal .table-c-currentSongList-in td {white-space: nowrap;}
+.allSongListModal .table-c-currentSongList-in td:first-child {width: 40px;}
+.allSongListModal .table-c-currentSongList-in td:nth-child(2) {width: 40px;}
+.allSongListModal .body-wrapper, .tablewrapper {overflow: auto;}
+.allSongList-wrapper .body-wrapper {max-height: 50vh;}
+.addOrEditSongModal-wrapper,.editSongCollection-wrapper,.allSongList-wrapper  {position: absolute;top: 0;left: 0;right: 0;bottom: 0;display: flex;flex-direction: column; align-items: center; justify-content: center;padding: 60px 0;z-index: 5;background-color: rgba(0, 0, 0, 0.2);}
+.allSongList-wrapper {z-index: 10;}
+.addOrEditSongModal, .editSongCollectionModal, .allSongListModal {background-color: white;z-index: 2;width: 600px;border: 1px solid rgba(0,0,0,.2);border-radius: 4px;}
+.addOrEditSongModal .header-wrapper, .editSongCollectionModal .header-wrapper, .allSongListModal .header-wrapper {display: flex;;justify-content: space-between;padding:15px;border-bottom: 1px solid #e9ecef;align-items: center;}
+.addOrEditSongModal .header-wrapper .closeModal, .editSongCollectionModal .header-wrapper .closeModal, .allSongListModal .header-wrapper .closeModal {width: 24px;height: 24px;cursor: pointer;transition: all 0.2s;}
+.addOrEditSongModal .header-wrapper .closeModal:hover, .editSongCollectionModal .header-wrapper .closeModal:hover, .allSongListModal .header-wrapper .closeModal:hover {fill: red;}
+.addOrEditSongModal .body-wrapper, .editSongCollectionModal .body-wrapper, .allSongListModal .body-wrapper {padding: 15px;}
+.addOrEditSongModal .footer-wrapper, .editSongCollectionModal .footer-wrapper, .allSongListModal .footer-wrapper {padding: 15px;border-top: 1px solid #e9ecef;display: flex;justify-content: flex-end;}
+.addOrEditSongModal .footer-wrapper button, .editSongCollectionModal .footer-wrapper button, .allSongListModal .footer-wrapper button {margin-right: 16px;}
+.addOrEditSongModal .footer-wrapper button:last-child, .editSongCollectionModal .footer-wrapper button:last-child, .allSongListModal .footer-wrapper button:last-child  {margin-right: 0;}
 .flexwrapper {display: flex;align-items: center;}
 .flexwrapper > span {width: 90px;}
 .flexwrapper > .form-control {width: auto; flex-grow: 1;}
