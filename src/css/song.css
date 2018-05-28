@@ -7,8 +7,8 @@
 #app .dist {position: relative;display: flex;justify-content: center;align-items: center;}
 /*#app .dist .songPhoto {}*/
 #app .pointer.active {transform: rotate(-24deg);}
-#app .dist .distPhoto{transform: rotate(0deg);  position: relative; background: url("../img/dist.png") no-repeat;width: 7.8rem;height: 7.8rem;background-size: contain;}
-#app .dist .distPhoto::after{content: "";width: 7.8rem;height: 7.8rem;display: block;background-size: contain;background-repeat: no-repeat;background-image: url("../img/dist-light.png");}
+#app .dist .distPhoto{transform: rotate(0deg);  position: relative; background: url("../img/dist.png") no-repeat;width: 7rem;height: 7rem;background-size: contain;}
+#app .dist .distPhoto::after{content: "";width: 7rem;height: 7rem;display: block;background-size: contain;background-repeat: no-repeat;background-image: url("../img/dist-light.png");}
 #app .dist .distPhoto .songPhoto {background-size: cover;z-index: -1;border-radius: 50%;width: 5rem;height: 5rem;background-repeat: no-repeat;}
 #app .dist .playBtn {width: 2rem;height: 2rem;display: none;}
 #app .dist.active .playBtn {display: block;}
